@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 /**
  * 二叉树数据结构入口测试方法
+ * @author Hazards
  */
 public class BinaryTreeMainApplication {
 
