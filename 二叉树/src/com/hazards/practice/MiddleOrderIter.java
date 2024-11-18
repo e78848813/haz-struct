@@ -1,7 +1,5 @@
 package com.hazards.practice;
 
-import com.hazards.domain.BinarySearchTree;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

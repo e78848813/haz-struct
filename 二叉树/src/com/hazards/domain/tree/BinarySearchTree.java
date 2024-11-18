@@ -1,4 +1,4 @@
-package com.hazards.domain;
+package com.hazards.domain.tree;
 
 
 import com.hazards.domain.inter.TreeInterface;
@@ -71,6 +71,10 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
         }
     }
 
+    protected void afterAdd(Node<E> node){
+
+    }
+
     private int compare(E element1, E element2) {
         if (comparator != null) {
             return comparator.compare(element1, element2);
@@ -131,11 +135,11 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
      *
      * @param <E>
      */
-    private static class Node<E> {
-        E element;
-        Node<E> left;
-        Node<E> right;
-        Node<E> parent;
+    protected static class Node<E> {
+        protected E element;
+        protected Node<E> left;
+        protected Node<E> right;
+        protected Node<E> parent;
 
         public Node(E element, Node<E> parentNode) {
             this.element = element;
@@ -154,6 +158,9 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
 
     }
 
+    protected Node<E> createNode(E element, Node<E> parentNode){
+        return new Node<>(element,parentNode);
+    }
 
     /**
      * 前序遍历算法
@@ -460,6 +467,7 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
         }
 
     }
+
 
 
     public void postOrderTraversal2() {

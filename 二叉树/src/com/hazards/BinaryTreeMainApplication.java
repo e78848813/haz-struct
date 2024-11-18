@@ -1,6 +1,6 @@
 package com.hazards;
 
-import com.hazards.domain.BinarySearchTree;
+import com.hazards.domain.tree.BinarySearchTree;
 import com.hazards.utils.printer.BinaryTrees;
 
 import java.util.Scanner;
