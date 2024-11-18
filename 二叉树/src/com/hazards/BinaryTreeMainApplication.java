@@ -20,15 +20,6 @@ public class BinaryTreeMainApplication {
         };
 
 
-
-        Integer[] data2 = new Integer[]{
-                7,4,9,5,8
-        };
-
-        Integer[] data3= new Integer[]{
-                1,4,3
-        };
-
         BinarySearchTree<Integer> myTree = new BinarySearchTree<>();
 
         for (Integer datum : data1) {
