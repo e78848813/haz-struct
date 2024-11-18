@@ -50,11 +50,6 @@ public class BinaryTreeMainApplication {
             myTree.remove(inputElement);
             BinaryTrees.println(myTree);
         }
-//        myTree.postOrderTraversal();
-//        myTree.postOrderTraversal2();
-//        boolean complete = myTree.isComplete();
-//        System.out.println("结果:"+complete);
-
 
     }
 
