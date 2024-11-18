@@ -136,10 +136,10 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
      * @param <E>
      */
     protected static class Node<E> {
-        protected E element;
-        protected Node<E> left;
-        protected Node<E> right;
-        protected Node<E> parent;
+        public E element;
+        public Node<E> left;
+        public Node<E> right;
+        public Node<E> parent;
 
         public Node(E element, Node<E> parentNode) {
             this.element = element;
@@ -156,6 +156,14 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
             return left == null && right == null;
         }
 
+
+        public boolean isLeftChild() {
+            return parent!=null && parent.left==this;
+        }
+
+        public boolean isRightChild() {
+            return parent!=null && parent.right==this;
+        }
     }
 
     protected Node<E> createNode(E element, Node<E> parentNode){
