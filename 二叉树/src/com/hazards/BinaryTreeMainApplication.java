@@ -42,7 +42,7 @@ public class BinaryTreeMainApplication {
         while (true){
             System.out.print("请输入你要删除的节点:");
             int inputElement = in.nextInt();
-            if(inputElement==-1){
+            if(inputElement<=0){
                 System.out.println("结束...");
                 break;
             }

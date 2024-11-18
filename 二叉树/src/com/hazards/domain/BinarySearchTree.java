@@ -489,6 +489,7 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
     }
 
 
+    @Override
     public void remove(E element){
         Node<E> node = node(element);
 
@@ -502,9 +503,9 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
         Node<E> replaceNode = node.left != null ? node.left : node.right;
         if(replaceNode!=null){
             replaceNode.parent = node.parent;
-            if(node.parent==node){
+            if(node.parent==null){
                 root = replaceNode;
-            }else if(node.parent.left==null){
+            }else if(node.parent.left==node){
                 node.parent.left = replaceNode;
             }else {
                 node.parent.right = replaceNode;
