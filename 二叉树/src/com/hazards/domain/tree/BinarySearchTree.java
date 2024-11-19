@@ -11,14 +11,14 @@ import java.util.*;
  */
 public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
 
-    private Node<E> root;
+    protected Node<E> root;
 
-    private int size;
+    protected int size;
 
     /**
      * 手动的比较器
      */
-    private Comparator<E> comparator;
+    protected Comparator<E> comparator;
 
     /**
      * 手动设置比较器
