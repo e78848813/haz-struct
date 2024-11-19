@@ -68,11 +68,11 @@ public class AVLTree<E> extends BinarySearchTree<E> {
             //R
             if (node.isLeftChild()) {
                 //RL
-
+                rotateRight(parNode);
                 rotateLeft(grandNode);
             } else {
                 //RR
-                rotateRight(grandNode);
+                rotateLeft(grandNode);
             }
         }
     }
@@ -90,24 +90,9 @@ public class AVLTree<E> extends BinarySearchTree<E> {
         node.right = childNode.left;
         childNode.left = node;
 
-        //更换当前子树的根节点
-        if (node.isLeftChild()) {
-            node.parent.left = childNode;
-        } else if(node.isRightChild()){
-            node.parent.right = childNode;
-        }else {
-            root = childNode;
-        }
+        //对各个节点的关系进行更新
+        afterRotate(node,childNode,childNode.left);
 
-        //更新父节点
-        if(childNode.left != null){
-            childNode.left.parent = node;
-        }
-        childNode.parent = node.parent;
-        node.parent = childNode;
-        //更新高度
-        updateHeight(node);
-        updateHeight(childNode);
     }
 
     /**
@@ -120,28 +105,33 @@ public class AVLTree<E> extends BinarySearchTree<E> {
         //更新当前节点与直接子节点的关系
         node.left = childNode.right;
         childNode.right = node;
+        //对各个节点的关系进行更新
+        afterRotate(node,childNode,childNode.right);
+    }
+
+    private void afterRotate(Node<E> grandNode,Node<E> parentNode,Node<E> childNode) {
         //更新当前子树的根节点
-        if (node.isLeftChild()) {
-            node.parent.left = childNode;
-        } else if(node.isRightChild()){
-            node.parent.right = childNode;
+        if (grandNode.isLeftChild()) {
+            grandNode.parent.left = parentNode;
+        } else if(grandNode.isRightChild()){
+            grandNode.parent.right = parentNode;
         }else {
-            root = childNode;
+            root = parentNode;
         }
+        parentNode.parent = grandNode.parent;
         //更新父节点
-        if(childNode.right != null){
-            childNode.right.parent = node;
+        if(childNode != null){
+            childNode.parent = grandNode;
         }
-        childNode.parent = node.parent;
-        node.parent = childNode;
+        grandNode.parent = parentNode;
         //更新高度
-        updateHeight(node);
-        updateHeight(childNode);
+        updateHeight(grandNode);
+        updateHeight(parentNode);
     }
 
     @Override
     protected Node<E> createNode(E element, Node<E> parentNode) {
-        return super.createNode(element, parentNode);
+        return new AVLNode<>(element, parentNode);
     }
 
 
@@ -188,6 +178,11 @@ public class AVLTree<E> extends BinarySearchTree<E> {
                 return right;
             }
             return isLeftChild() ? left : right;
+        }
+
+        @Override
+        public String toString() {
+            return element+"_";
         }
     }
 

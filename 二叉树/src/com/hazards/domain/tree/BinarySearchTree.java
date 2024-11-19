@@ -43,7 +43,7 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
         elementCheck(element);
         //第一次添加
         if (root == null) {
-            root = new Node<>(element, null);
+            root = createNode(element, null);
             size++;
             return;
         }
@@ -63,12 +63,15 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
             }
         }
         //将新节点放入子节点中
-        Node<E> newNode = new Node<>(element, parentNode);
+        Node<E> newNode = createNode(element, parentNode);
         if (cmp > 0) {
             parentNode.left = newNode;
         } else {
             parentNode.right = newNode;
         }
+
+        //添加节点的后续操作
+        afterAdd(newNode);
     }
 
     protected void afterAdd(Node<E> node){
@@ -126,7 +129,9 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
 
     @Override
     public Object string(Object node) {
-        return ((Node<E>) node).element;
+        Node<E> eNode = (Node<E>) node;
+        E eParent = eNode.parent==null?null:eNode.parent.element;
+        return eNode.element+"_"+eParent;
     }
 
 
@@ -368,7 +373,7 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
             node = node.parent;
         }
 
-        return node.parent == null ? new Node<>(null, null) : node.parent;
+        return node.parent == null ? createNode(null, null) : node.parent;
     }
 
     /**
