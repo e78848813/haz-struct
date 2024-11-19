@@ -30,11 +30,11 @@ public class BinaryTreeMainApplication {
         AVLTree<Integer> mtAVLTree = new AVLTree<>();
 
 
-        for (Integer datum : data2) {
-            System.out.println("添加:"+datum);
-                mtAVLTree.add(datum);
-                BinaryTrees.println(mtAVLTree);
-        }
+//        for (Integer datum : data2) {
+//            System.out.println("添加:"+datum);
+//                mtAVLTree.add(datum);
+//                BinaryTrees.println(mtAVLTree);
+//        }
 
         //打印树状图
 //        BinaryTrees.println(myTree);

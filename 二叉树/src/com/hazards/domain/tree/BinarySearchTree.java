@@ -129,9 +129,7 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
 
     @Override
     public Object string(Object node) {
-        Node<E> eNode = (Node<E>) node;
-        E eParent = eNode.parent==null?null:eNode.parent.element;
-        return eNode.element+"_"+eParent;
+        return node.toString();
     }
 
 

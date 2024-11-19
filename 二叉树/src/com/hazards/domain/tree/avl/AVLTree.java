@@ -31,7 +31,7 @@ public class AVLTree<E> extends BinarySearchTree<E> {
                 updateHeight(node);
             } else {
                 //恢复平衡
-                rebalanced(node);
+                rebalanced2(node);
                 break;
             }
         }
@@ -73,6 +73,32 @@ public class AVLTree<E> extends BinarySearchTree<E> {
             } else {
                 //RR
                 rotateLeft(grandNode);
+            }
+        }
+    }
+
+
+    private void rebalanced2(Node<E> grandNode) {
+        Node<E> parNode = ((AVLNode<E>) grandNode).tallerChildNode();
+        Node<E> node = ((AVLNode<E>) parNode).tallerChildNode();
+        if (parNode.isLeftChild()) {
+            //L
+            if (node.isLeftChild()) {
+                //LL
+                rotate(grandNode,node.left,node,node.right,parNode,parNode.right,grandNode,grandNode.right);
+            } else {
+                //LR
+                rotate(grandNode,parNode.left,parNode,node.left,node,node.right,grandNode,grandNode.right);
+
+            }
+        } else {
+            //R
+            if (node.isLeftChild()) {
+                //RL
+                rotate(grandNode,grandNode.left,grandNode,node.left,node,node.right,parNode,parNode.right);
+            } else {
+                //RR
+                rotate(grandNode,grandNode.left,grandNode,parNode.left,parNode,node.left,node,node.right);
             }
         }
     }
@@ -129,6 +155,50 @@ public class AVLTree<E> extends BinarySearchTree<E> {
         updateHeight(parentNode);
     }
 
+    /**
+     * 按照规律旋转
+     */
+    private void rotate(Node<E> rNode,
+                        Node<E> aNode,Node<E> bNode,Node<E> cNode,
+                        Node<E> dNode,
+                        Node<E> eNode,Node<E> fNode,Node<E> gNode) {
+        //根节点
+        dNode.parent = rNode.parent;
+        if(rNode.isLeftChild()){
+            rNode.parent.left = dNode;
+        }else if(rNode.isRightChild()){
+            rNode.parent.right = dNode;
+        }else {
+            root = dNode;
+        }
+
+        //根节点左子树 a-b-c
+        if(aNode!=null){
+            aNode.parent = bNode;
+        }
+        if(cNode!=null){
+            cNode.parent = bNode;
+        }
+        bNode.left = aNode;
+        bNode.right = cNode;
+
+        //根节点右子树 e-f-g
+        if(eNode!=null){
+            eNode.parent = fNode;
+        }
+        if(gNode!=null){
+            gNode.parent = fNode;
+        }
+        fNode.left=eNode;
+        fNode.right=gNode;
+
+        //根节点  a-d-f
+        dNode.left=bNode;
+        dNode.right=fNode;
+        bNode.parent = dNode;
+        fNode.parent = dNode;
+    }
+
     @Override
     protected Node<E> createNode(E element, Node<E> parentNode) {
         return new AVLNode<>(element, parentNode);
@@ -182,7 +252,12 @@ public class AVLTree<E> extends BinarySearchTree<E> {
 
         @Override
         public String toString() {
-            return element+"_";
+//            String parentStr="";
+//            if(parent!=null){
+//                parentStr = parent.element+"";
+//            }
+//            return element+"_p("+parentStr+")_h("+height+")";
+            return element.toString();
         }
     }
 
