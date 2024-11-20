@@ -518,7 +518,6 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
             node = prev;
         }
 
-
         Node<E> replaceNode = node.left != null ? node.left : node.right;
         if(replaceNode!=null){
             replaceNode.parent = node.parent;
@@ -539,9 +538,14 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
             }
         }
 
+        //删除后的逻辑处理
+        afterRemove(node);
 
     }
 
+    protected void afterRemove(Node<E> node){
+
+    }
 
     private Node<E> node(E element){
         if (element==null) return null;
