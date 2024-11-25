@@ -1,18 +1,14 @@
-package com.hazards;
+package hazards;
 
-import com.hazards.domain.tree.BinarySearchTree;
-import com.hazards.domain.tree.avl.AVLTree;
-import com.hazards.utils.printer.BinaryTrees;
+import hazards.domain.tree.avl.AVLTree;
+import hazards.utils.printer.BinaryTrees;
 
 import java.util.Scanner;
 
 /**
- * 二叉树数据结构入口测试方法
- *
- * @author Hazards
+ * 红黑树测试模块
  */
-public class BinaryTreeMainApplication {
-
+public class MainApplication {
 
     public static void main(String[] args) {
 
@@ -34,16 +30,16 @@ public class BinaryTreeMainApplication {
         };
 
 
-        BinarySearchTree<Integer> myTree = new BinarySearchTree<>();
+
 
         AVLTree<Integer> mtAVLTree = new AVLTree<>();
 
 
         for (Integer datum : data1) {
-            System.out.println("添加:" + datum);
+//            System.out.println("添加:" + datum);
             mtAVLTree.add(datum);
 //            myTree.add(datum);
-            BinaryTrees.println(mtAVLTree);
+//            BinaryTrees.println(mtAVLTree);
         }
 
         //打印树状图
@@ -63,6 +59,4 @@ public class BinaryTreeMainApplication {
         }
 
     }
-
-
 }

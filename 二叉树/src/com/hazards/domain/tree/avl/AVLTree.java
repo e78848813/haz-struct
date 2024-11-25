@@ -127,13 +127,13 @@ public class AVLTree<E> extends BinarySearchTree<E> {
      */
     private void rotateLeft(Node<E> node) {
         Node<E> childNode = node.right;
-
+        Node<E> grandSonNode = childNode.left;
         //更新当前节点和直接子节点的关系
-        node.right = childNode.left;
+        node.right = grandSonNode;
         childNode.left = node;
 
         //对各个节点的关系进行更新
-        afterRotate(node,childNode,childNode.left);
+        afterRotate(node,childNode,grandSonNode);
 
     }
 
@@ -144,11 +144,12 @@ public class AVLTree<E> extends BinarySearchTree<E> {
      */
     private void rotateRight(Node<E> node) {
         Node<E> childNode = node.left;
+        Node<E> grandSonNode = childNode.right;
         //更新当前节点与直接子节点的关系
-        node.left = childNode.right;
+        node.left = grandSonNode;
         childNode.right = node;
         //对各个节点的关系进行更新
-        afterRotate(node,childNode,childNode.right);
+        afterRotate(node,childNode,grandSonNode);
     }
 
     private void afterRotate(Node<E> grandNode,Node<E> parentNode,Node<E> childNode) {
@@ -268,18 +269,22 @@ public class AVLTree<E> extends BinarySearchTree<E> {
 
         @Override
         public String toString() {
-//            String parentStr="";
-//            if(parent!=null){
-//                parentStr = parent.element+"";
-//            }
-//            return element+"_p("+parentStr+")_h("+height+")";
-            return element.toString();
+            String parentStr="";
+            if(parent!=null){
+                parentStr = parent.element+"";
+            }
+            return element+"_p("+parentStr+")";
+//            return element.toString();
         }
     }
 
+    @Override
+    public Object string(Object node) {
+        return (AVLNode<E>)node;
+    }
 
     /**
-     * 当前节点是否是平衡
+     * 当前节点是否平衡
      *
      * @param node 节点
      * @return 是否平衡

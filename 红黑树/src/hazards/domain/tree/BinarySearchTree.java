@@ -133,7 +133,7 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
 
     @Override
     public Object string(Object node) {
-        return ((Node<E>)node).element;
+        return ((Node<E>)node);
     }
 
 
