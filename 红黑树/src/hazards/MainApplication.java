@@ -43,7 +43,7 @@ public class MainApplication {
         }
 
         //打印树状图
-        BinaryTrees.println(mtAVLTree, BinaryTrees.PrintStyle.LEVEL_ORDER);
+//        BinaryTrees.println(mtAVLTree, BinaryTrees.PrintStyle.LEVEL_ORDER);
 
 
         Scanner in = new Scanner(System.in);
@@ -55,7 +55,7 @@ public class MainApplication {
                 break;
             }
             mtAVLTree.remove(inputElement);
-            BinaryTrees.println(mtAVLTree);
+//            BinaryTrees.println(mtAVLTree);
         }
 
     }

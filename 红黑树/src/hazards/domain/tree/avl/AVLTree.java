@@ -1,15 +1,11 @@
 package hazards.domain.tree.avl;
 
-import hazards.domain.tree.BinarySearchTree;
-import hazards.utils.printer.BinaryTreeInfo;
-import hazards.utils.printer.BinaryTrees;
-
 import java.util.Comparator;
 
 /**
  * AVL树示例
  */
-public class AVLTree<E> implements BinaryTreeInfo {
+public class AVLTree<E>  {
 
 
     protected AVLNode<E> root;
@@ -249,26 +245,6 @@ public class AVLTree<E> implements BinaryTreeInfo {
             return comparator.compare(element1, element2);
         }
         return ((Comparable) element1).compareTo(element2);
-    }
-
-    @Override
-    public Object root() {
-        return this.root;
-    }
-
-    @Override
-    public Object left(Object node) {
-        return ((AVLNode<E>) node).left;
-    }
-
-    @Override
-    public Object right(Object node) {
-        return ((AVLNode<E>) node).right;
-    }
-
-    @Override
-    public Object string(Object node) {
-        return ((AVLNode<E>)node).element;
     }
 
     /**
