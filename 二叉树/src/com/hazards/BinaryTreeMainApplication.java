@@ -47,7 +47,7 @@ public class BinaryTreeMainApplication {
         }
 
         //打印树状图
-        BinaryTrees.println(myTree);
+        BinaryTrees.println(myTree, BinaryTrees.PrintStyle.LEVEL_ORDER);
 
 
 //        Scanner in = new Scanner(System.in);
