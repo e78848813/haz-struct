@@ -1,7 +1,6 @@
 package hazards;
 
 import hazards.domain.tree.avl.AVLTree;
-import hazards.utils.printer.BinaryTrees;
 
 import java.util.Scanner;
 
