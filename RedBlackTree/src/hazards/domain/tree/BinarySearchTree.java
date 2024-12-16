@@ -142,7 +142,7 @@ public class BinarySearchTree<E> implements TreeInterface<E>, BinaryTreeInfo {
      *
      * @param <E>
      */
-    protected static class Node<E> {
+    public static class Node<E> {
         public E element;
         public Node<E> left;
         public Node<E> right;
